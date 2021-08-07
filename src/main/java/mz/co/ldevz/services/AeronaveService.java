@@ -1,4 +1,4 @@
-package mz.co.ldevz.services;
+package com.comercial.domain.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,10 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import mz.co.ldevz.entity.Aeronave;
-import mz.co.ldevz.repository.AeronaveRepository;
-
-
+import com.comercial.domain.model.Aeronave;
+import com.comercial.domain.model.CompanhiaAerea;
+import com.comercial.domain.repository.AeronaveRepository;
 
 @Service
 public class AeronaveService 
@@ -39,5 +38,9 @@ public class AeronaveService
 	public void remover(Long codigo)
 	{
 		aeronaveRepository.deleteById(codigo);
+	}
+	public List<Aeronave> pesquisarNome(String referencia)
+	{
+		return aeronaveRepository.findCaByName(referencia);
 	}
 }

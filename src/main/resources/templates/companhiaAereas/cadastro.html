@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{adminlayout}"
+	layout:decorate="~{layout/layout}"
 	>
 	<head>
 		<title>Cadastro de Companhias aereas</title>
 	</head>
 	<body>
-		<section layout:fragment="corpo">
+		<section layout:fragment="conteudo">
 			<div class="container mt-4">
 				<div th:replace="fragments/mensagemSucesso.html :: alert"></div>
 				<div class="row">

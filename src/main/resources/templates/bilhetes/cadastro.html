@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout}"
+	layout:decorate="~{layout/layout}"
 	>
 	<head>
 		<title>Cadastro de Reservas</title>
 	</head>
 	<body>
-		<section layout:fragment="corpo">
+		<section layout:fragment="conteudo">
 			<div class="container mt-4">
 				<div th:replace="fragments/mensagemSucesso.html :: alert"></div>
 				<div class="row">
@@ -15,17 +15,18 @@
 						<h4>Cadastro de Reservas</h4>
 					</div>
 					<div class="col-12 col-sm-3" style="text-align: right;">
-						<a type="button" class="btn btn-success" th:href="@{/bilhetes}">Pesquisar <i class="far fa-eye"></i></a>
+						<a type="button" class="btn btn-success" th:href="@{/clientes}">Pesquisar <i class="far fa-eye"></i></a>
 					</div>
 				</div>
 				<hr>
 				<div class="card">
 					<div class="card-body">
-						<form th:object="${bilhete}" method="post" th:action="@{/bilhetes/novo}">
-							<div class="row">
-									<input type="hidden"  th:field="*{dataReserva}">
-								
-							</div>
+						<form th:action="@{/bilhetes/pesquisarCa}" method="get">
+					<label>Pesquisar por origem/destino</label>
+					<input type="text" name="nomePesquisa">
+					<input type="submit" value="pesquisar">
+				</form>
+							
 				<hr>
 				<table class="table table-stripped table-bordered">
 					<tr>
@@ -51,7 +52,7 @@
 						<td th:text="${voo.preco}"></td>
 						<td th:text="${voo.aeronave?.referencia}"></td>
 						<td class="text-center">
-							<a th:href="@{/bilhetes/{codigo}(codigo = ${voo.codigo})}" data-bs-toggle="tooltip" data-bs-placement="left" title="Reservar"><i class="fa fa-user-edit"></i></a> 
+							<a th:href="@{/clientes/novo}" data-bs-toggle="tooltip" data-bs-placement="left" title="Reservar"><i class="fa fa-user-edit"></i></a> 
 						</td> 
 					</tr>
 				</table>

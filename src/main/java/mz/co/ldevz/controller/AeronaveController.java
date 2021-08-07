@@ -1,4 +1,4 @@
-package mz.co.ldevz.controller;
+package com.comercial.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import mz.co.ldevz.entity.Aeronave;
-import mz.co.ldevz.services.AeronaveService;
-import mz.co.ldevz.services.CompanhiaAereaService;
+import com.comercial.domain.model.Aeronave;
+import com.comercial.domain.service.AeronaveService;
+import com.comercial.domain.service.CompanhiaAereaService;
 
 
 
@@ -58,6 +58,13 @@ public class AeronaveController
 	{
 		aeronaveService.remover(codigo);
 		return new ModelAndView("redirect:/aeronaves");
+	}
+	@GetMapping("/pesquisarCa")
+	public ModelAndView getCA(String nomePesquisa)
+	{
+		ModelAndView mv=new ModelAndView("aeronaves/pesquisa");
+		mv.addObject("aeronaves", aeronaveService.pesquisarNome(nomePesquisa));
+		return mv;
 	}
 	
 	

@@ -7,10 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.comercial.domain.model.CompanhiaAerea;
+import com.comercial.domain.model.Cliente;
 
 @Repository
-public interface CompanhiaAereaRepository extends JpaRepository<CompanhiaAerea, Long>{
-	@Query(value="Select * from companhia_aerea ca where ca.nome like %:nome%", nativeQuery=true)
-	List<CompanhiaAerea> findCaByName(@Param("nome")String nome);
+public interface ClienteRepository extends JpaRepository<Cliente, Long>{
+	@Query(value="Select * from cliente c join voo v where c.codigo_voo=v.codigo and"
+			+ " c.nome like %:nome%", nativeQuery=true)
+	List<Cliente> findCaByName(@Param("nome")String nome);
+
 }

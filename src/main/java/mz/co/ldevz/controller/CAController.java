@@ -1,4 +1,4 @@
-package mz.co.ldevz.controller;
+package com.comercial.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.comercial.domain.model.CompanhiaAerea;
+import com.comercial.domain.repository.CompanhiaAereaRepository;
+import com.comercial.domain.service.CompanhiaAereaService;
+import com.comercial.domain.service.NacionalidadeService;
+
 import groovyjarjarpicocli.CommandLine.Model;
-import mz.co.ldevz.entity.CompanhiaAerea;
-import mz.co.ldevz.services.CompanhiaAereaService;
-import mz.co.ldevz.services.NacionalidadeService;
 
 
 @Controller
